@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.middle {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: column;
+  position: absolute;
+  left: 46%;
+  top: 45%;
+}
