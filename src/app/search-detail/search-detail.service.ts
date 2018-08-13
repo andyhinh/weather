@@ -1,9 +1,11 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { HttpErrorResponse } from '../../../node_modules/@angular/common/http';
 
+@Injectable()
 export class WeatherService {
   constructor(private http: Http) { 
     console.log('Production='+ environment.production);
@@ -12,14 +14,18 @@ export class WeatherService {
   getWeatherByCity(cityName): Observable<any[]>{
 
     return this.http.get(environment.baseUrl +'weather?q='+ cityName +'&appid='+ environment.appId +'&units=' + environment.units)
-    .map(response => this.extractData(response))
-    .catch(this.handleError);
+    .pipe(map(response => this.extractData(response)),
+    catchError( error => {
+      return this.handleError(error);
+    }))
   }
 
-  getWeatherByZip(zipCode): Observable<any[]> {
+  getWeatherByZip(zipCode) {
     return this.http.get(environment.baseUrl +'weather?zip='+ zipCode +',us&appid='+ environment.appId +'&units=' + environment.units)
-    .map(response => this.extractData(response))
-    .catch(this.handleError);
+    .pipe(map(response => this.extractData(response)),
+    catchError( error => {
+      return this.handleError(error);
+    }))
   }
 
   private extractData(res: any) {

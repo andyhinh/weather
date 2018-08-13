@@ -3,17 +3,18 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule, 
   MatFormFieldModule,
-  MatFormFieldControl, 
   MatIconModule,
   MatInputModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { BackgroundComponent } from './background/background.component';
 import { SearchButtonComponent } from './search-button/search-button.component';
 import { SearchDetailComponent } from './search-detail/search-detail.component';
+import { WeatherService } from './search-detail/search-detail.service';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,10 @@ import { SearchDetailComponent } from './search-detail/search-detail.component';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
