@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { SearchDetailComponent} from './search-detail/search-detail.component';
+import { BackgroundComponent } from './background/background.component';
+import { $ } from '../../node_modules/protractor';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,7 @@ import { SearchDetailComponent} from './search-detail/search-detail.component';
 })
 export class AppComponent {
   @ViewChild(SearchDetailComponent) child : SearchDetailComponent;
+  @ViewChild(BackgroundComponent) background : BackgroundComponent;
 
   public dataSent: string;
   title = 'weather';
@@ -25,13 +28,14 @@ export class AppComponent {
   }
 
   setWeatherStatus($event) {
-    if ($event.clouds.all < 21) {
+    if ($event.clouds.all < 16) {
       this.child.weatherStatus = "Clear";
-    } else if ($event.clouds.all < 65) {
+    } else if ($event.clouds.all < 60) {
       this.child.weatherStatus = "Partly Cloudy";
     } else {
       this.child.weatherStatus = "Cloudy";
     }
+
     for (let i = 0; i < $event.weather.length; i++) {
       if ($event.weather[i].main === "Rain") {
         this.child.weatherStatus = "Rain";
@@ -39,12 +43,21 @@ export class AppComponent {
       
       if ($event.weather[i].description === "thunderstorm") {
         this.child.weatherStatus = "Thunderstorm";
+        break;
       } else if ($event.weather[i].description === "light rain") {
         this.child.weatherStatus = "Light Rain";
       } else if ($event.weather[i].description === "heavy intensity rain") {
         this.child.weatherStatus = "Heavy Rain";
+      } else if ($event.weather[i].main === "Snow") {
+        this.child.weatherStatus = "Snow";
+        break;
+      } else if ($event.weather[i].main === "Extreme") {
+        this.child.weatherStatus = "Extreme";
+        break;
       }
     }
+
+    this.background.changeBackground(this.child.weatherStatus);
     return;
   }
 }
