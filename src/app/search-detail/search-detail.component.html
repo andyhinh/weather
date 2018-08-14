@@ -5,7 +5,7 @@
     <div class="weather">
       <i *ngIf="weatherStatus=='Cloudy' || weatherStatus=='Partly Cloudy'" class="wi wi-cloudy weatherIcon"></i>
       <i *ngIf="weatherStatus=='Clear'" class="wi wi-day-sunny weatherIcon"></i>
-      <i *ngIf="weatherStatus=='Rain'" class="wi wi-rain-mix weatherIcon"></i>
+      <i *ngIf="weatherStatus=='Rain' || weatherStatus=='Light Rain'" class="wi wi-rain-mix weatherIcon"></i>
       <i *ngIf="weatherStatus=='Heavy Rain'" class="wi wi-thunderstorm weatherIcon"></i>
       <i *ngIf="weatherStatus=='Thunderstorm'" class="wi wi-lightning weatherIcon"></i>
 

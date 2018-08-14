@@ -23,15 +23,14 @@ export class SearchButtonComponent implements OnInit {
     let isnum = /^\d+$/.test(this.value);
     
     if (isnum) {
-      let data;
       this._weatherService.getWeatherByZip(this.value)
-      .subscribe( res => {
+      .subscribe( (res) => {
         this.data = res.json();
         this.eventClicked.emit(this.data);
       });
     } else {
       this._weatherService.getWeatherByCity(this.value)
-      .subscribe( res => {
+      .subscribe( (res) => {
         this.data = res.json();
         this.eventClicked.emit(this.data);
       });
