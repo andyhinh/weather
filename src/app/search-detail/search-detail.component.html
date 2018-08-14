@@ -1,3 +1,17 @@
-<p>
-  search-detail works!
-</p>
+<div *ngIf="data" class="detail">
+    <p class="degrees">
+      {{data.main.temp}}
+    </p>
+    <div class="weather">
+      <mat-icon *ngIf="weatherStatus=='Cloudy' || weatherStatus=='Partly Cloudy'" class="weatherIcon">wb_cloudy</mat-icon>
+      <mat-icon *ngIf="weatherStatus=='Clear'" class="weatherIcon">wb_sunny</mat-icon>
+      <p class="status">
+        {{weatherStatus}}
+      </p>
+    </div>
+    <p class="city">
+      {{data.name}}
+    </p>
+   
+</div>
+

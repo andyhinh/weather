@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-search-detail',
@@ -6,6 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-detail.component.css']
 })
 export class SearchDetailComponent implements OnInit {
+
+  @Input() data: any;
+
+  weatherStatus: string;
 
   constructor() { }
 

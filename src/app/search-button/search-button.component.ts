@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import {WeatherService} from '../search-detail/search-detail.service';
 
 @Component({
@@ -10,6 +10,9 @@ export class SearchButtonComponent implements OnInit {
 
   value:string;
   weatherData: any[];
+  data:any;
+
+  @Output() eventClicked = new EventEmitter<string>();
 
   constructor(private _weatherService:WeatherService) { }
 
@@ -17,16 +20,21 @@ export class SearchButtonComponent implements OnInit {
   }
   
   onSubmit() {
-    console.log(this.value);
     let isnum = /^\d+$/.test(this.value);
-    let data = "";
-
+    
     if (isnum) {
-      let data = this._weatherService.getWeatherByZip(this.value);
-      console.log("isNumber");
+      let data;
+      this._weatherService.getWeatherByZip(this.value)
+      .subscribe( res => {
+        this.data = res.json();
+        this.eventClicked.emit(this.data);
+      });
     } else {
-      let data = this._weatherService.getWeatherByCity(this.value);
+      this._weatherService.getWeatherByCity(this.value)
+      .subscribe( res => {
+        this.data = res.json();
+        this.eventClicked.emit(this.data);
+      });
     }
-    console.log(data);
   }
 }

@@ -4,7 +4,8 @@ import {
   MatButtonModule, 
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule,
+  MatCardModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -29,6 +30,7 @@ import { WeatherService } from './search-detail/search-detail.service';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    MatCardModule,
     FormsModule,
     HttpModule
   ],

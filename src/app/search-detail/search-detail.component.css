@@ -1,0 +1,36 @@
+
+
+.detail {
+  justify-content: left;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.degrees {
+  font-size: 60px;
+  color: #3f51b5;
+  font-weight: 600;
+  margin: 0;
+}
+
+.city {
+  color: white;
+  margin: 0;
+  font-size: 20px;
+}
+
+.status {
+  color: white;
+  margin: 0;
+  font-size: 20px;
+}
+
+.weather {
+  flex-flow: row;
+  display: flex;
+}
+
+.weatherIcon {
+  color: white;
+  margin-right: 5px;
+}

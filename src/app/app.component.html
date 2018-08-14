@@ -1,10 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div>
   <app-background></app-background>
-  <div class="middle">
-    <app-search-detail></app-search-detail>
-    <app-search-button></app-search-button>
-  </div>
-  
+  <mat-card class="middle">    
+    <app-search-button (eventClicked)="childEventClicked($event)"></app-search-button>
+    <app-search-detail [data]="dataSent"></app-search-detail>
+  </mat-card>
 </div>
 

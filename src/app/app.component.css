@@ -6,11 +6,13 @@
 }
 
 .middle {
-  align-items: center;
+  align-items: left;
   display: flex;
   justify-content: center;
   flex-flow: column;
   position: absolute;
-  left: 45%;
-  top: 45%;
+  right: .5%;
+  top: 1%;
+  border-radius: 30px;
+  background:rgba(255, 255, 255, 0.7);
 }
