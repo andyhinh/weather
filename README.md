@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Set up
 
 1. git clone the repository.
-2. cd into the repository and npm install OR yarn 
+2. cd into the repository and `npm install` OR `yarn`
 
 ## Development server
 
